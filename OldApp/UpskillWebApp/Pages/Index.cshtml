@@ -5,17 +5,22 @@
 }  
 
 <div class="text-left">
-    <h1 class="display-4">Dashboard</h1>
-    <p>This is the dashboard. Here you will be able to see all your jobs.</p>
-    <br />
-    <p>
-        @Model.TestConnection()
-    </p>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Job Reference</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
 
-    @{ 
-        foreach (string x in Model.GetFirstCustomer())
-        {
-        <p>x</p>
-            }
-        }
+            <tbody>
+                <tr>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </div>

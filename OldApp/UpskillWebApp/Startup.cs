@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using UpskillWebApp.Data;
 
 namespace UpskillWebApp
 {
@@ -24,6 +26,10 @@ namespace UpskillWebApp
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddRazorPages();
+
+			services.AddDbContext<JobContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+			//services.AddDatabaseDeveloperPageExceptionFilter();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,3 +60,6 @@ namespace UpskillWebApp
 		}
 	}
 }
+
+
+//https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-5.0&tabs=visual-studio

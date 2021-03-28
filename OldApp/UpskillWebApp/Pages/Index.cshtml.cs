@@ -36,7 +36,7 @@ namespace UpskillWebApp.Pages
 			}
 		}
 
-        public List<string> GetFirstCustomer()
+        public List<string> GetFirstJob()
 		{
             string query = @"SELECT * FROM jobs";
             List<string> customer = ExecuteReadQuery(query);
