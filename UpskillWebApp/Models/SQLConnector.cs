@@ -19,7 +19,7 @@ namespace UpskillWebApp.Models
 			//Create a more secure way of retrieving the connection string. This is bad.
 			string connectionString = @"Server = tcp:upskilljobmgmt.database.windows.net,1433; Initial Catalog = Upskill; Persist Security Info = False; User ID = AdminAccount; Password =@!llCQkr35Pb; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;";
 
-			SqlConnection connection = new(connectionString); //Create a connection
+			SqlConnection connection = new SqlConnection(connectionString); //Create a connection
 
 			try //Try to open the connection. If successful, it will return. If not, error.
 			{
