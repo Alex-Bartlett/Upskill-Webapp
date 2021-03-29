@@ -8,7 +8,7 @@ namespace UpskillWebApp.Models
 {
 	public class Job
 	{
-		public int Job_id { get; set; }
+		public int ID { get; set; }
 		public string Job_reference { get; set; }
 		[DataType(DataType.Date)]
 		public DateTime Date_start { get; set; }

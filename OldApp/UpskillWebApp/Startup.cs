@@ -27,7 +27,8 @@ namespace UpskillWebApp
 		{
 			services.AddRazorPages();
 
-			services.AddDbContext<JobContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+		    services.AddDbContext<JobsContext>(options =>
+		            options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
 			//services.AddDatabaseDeveloperPageExceptionFilter();
 		}
