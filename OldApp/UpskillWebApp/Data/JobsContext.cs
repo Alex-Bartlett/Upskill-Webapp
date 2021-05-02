@@ -16,8 +16,7 @@ namespace UpskillWebApp.Data
 
         public DbSet<Customer> Customers { get; set; }
 		public DbSet<Staff> Staffs { get; set; }
-
-		public DbSet<UpskillWebApp.Models.Job> Job { get; set; }
+		public DbSet<Job> Jobs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{

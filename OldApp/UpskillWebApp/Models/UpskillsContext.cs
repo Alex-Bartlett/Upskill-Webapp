@@ -27,7 +27,7 @@ namespace UpskillWebApp.Models
         public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
-        public virtual DbSet<Jobs> Jobs { get; set; }
+        public virtual DbSet<Job> Jobs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -188,14 +188,14 @@ namespace UpskillWebApp.Models
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Jobs>(entity =>
+            modelBuilder.Entity<Job>(entity =>
             {
-                entity.HasKey(e => e.JobId)
+                entity.HasKey(e => e.ID)
                     .HasName("PK__jobs__6E32B6A55E22BC8F");
 
                 entity.ToTable("jobs");
 
-                entity.Property(e => e.JobId).HasColumnName("job_id");
+                entity.Property(e => e.ID).HasColumnName("job_id");
 
                 entity.Property(e => e.Address)
                     .HasColumnName("address")

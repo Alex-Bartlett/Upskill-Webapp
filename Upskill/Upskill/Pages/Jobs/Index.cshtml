@@ -1,0 +1,82 @@
+﻿@page
+@model Upskill.Pages.Jobs.IndexModel
+
+@{
+    ViewData["Title"] = "Jobs";
+}
+
+<h1>Jobs</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.IDSort">
+                    @Html.DisplayNameFor(model => model.Jobs[0].ID)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jobs[0].JobReference)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.Jobs[0].Customer.FullName)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Jobs[0].DueDate)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.StatusSort">
+                    @Html.DisplayNameFor(model => model.Jobs[0].Status)
+                </a>
+            </th>
+            <th>
+                <form asp-page="./Index" method="get">
+                    <div class="input-group w-auto">
+                        <input type="text" name="SearchString" value="@Model.CurrentFilter" class="form-control" placeholder="Search" />
+                        <button type="button" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Jobs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobReference)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                </td>
+                <td style="color:@Model.GetStatusColour(item.Status.ToString())">
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-outline-primary">Edit</a>
+                    <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-outline-primary">Details</a>
+                    <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-outline-primary">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

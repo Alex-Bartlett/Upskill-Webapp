@@ -1,0 +1,91 @@
+﻿@page
+@model Upskill.Pages.Jobs.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Job</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.JobReference)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.JobReference)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.Town)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.Town)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.Postcode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.Postcode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.Status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.HoursWorked)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.HoursWorked)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.DaysWorked)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.DaysWorked)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.DueDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.DueDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.FinishedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.FinishedDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.Notes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.Notes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.Customer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.Customer.CustomerID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Job.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

@@ -15,7 +15,7 @@ namespace UpskillWebApp.Models
             AspNetUserLogins = new HashSet<AspNetUserLogins>();
             AspNetUserRoles = new HashSet<AspNetUserRoles>();
             AspNetUserTokens = new HashSet<AspNetUserTokens>();
-            Jobs = new HashSet<Jobs>();
+            Jobs = new HashSet<Job>();
         }
 
         public string Id { get; set; }
@@ -38,6 +38,6 @@ namespace UpskillWebApp.Models
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual ICollection<AspNetUserTokens> AspNetUserTokens { get; set; }
-        public virtual ICollection<Jobs> Jobs { get; set; }
+        public virtual ICollection<Job> Jobs { get; set; }
     }
 }

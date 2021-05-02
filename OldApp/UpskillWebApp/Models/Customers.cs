@@ -11,7 +11,7 @@ namespace UpskillWebApp.Models
     {
         public Customers()
         {
-            Jobs = new HashSet<Jobs>();
+            Jobs = new HashSet<Job>();
         }
 
         public int CustomerId { get; set; }
@@ -24,6 +24,6 @@ namespace UpskillWebApp.Models
         public string HomeNumber { get; set; }
         public string Email { get; set; }
 
-        public virtual ICollection<Jobs> Jobs { get; set; }
+        public virtual ICollection<Job> Jobs { get; set; }
     }
 }
