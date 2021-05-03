@@ -12,7 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UpskillWebApp.Data;
-
+//above is the references for entity frameworkcore and identity and basic aspcore features
 namespace UpskillWebApp
 {
 	public class Startup
@@ -27,12 +27,16 @@ namespace UpskillWebApp
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			//register the dbcontext of entityframeworkcore which is scaffolded from database sql server
 			services.AddDbContext<ApplicationDbContext>(options =>
 			   options.UseSqlServer(
 				   Configuration.GetConnectionString("Default")));
+			//register identity for log in functionality with signin user management
 			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddEntityFrameworkStores<ApplicationDbContext>();
+			//register support for model viw controller standard structure 
 			services.AddControllersWithViews();
+
 			services.AddRazorPages();
 
 		    //services.AddDbContext<JobsContext>(options =>
@@ -63,6 +67,7 @@ namespace UpskillWebApp
 
 			app.UseRouting();
 
+			//add use of authentication and authorizastion functionality
 			app.UseAuthentication();
 			app.UseAuthorization();
 
@@ -72,6 +77,7 @@ namespace UpskillWebApp
 				endpoints.MapRazorPages();
 			});
 
+			//register routing for model view controller 
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllerRoute(

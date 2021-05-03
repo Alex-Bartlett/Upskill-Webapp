@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,14 +13,21 @@ namespace UpskillWebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        SignInManager<IdentityUser> _SignInManager;
+        UserManager<IdentityUser> _UserManager;
+        public HomeController(ILogger<HomeController> logger,
+            SignInManager<IdentityUser> SignInManager,
+            UserManager<IdentityUser> UserManager
+            )
         {
             _logger = logger;
+            _SignInManager = SignInManager;
+            _UserManager = UserManager;
         }
-
+        
         public IActionResult Index()
         {
+          var userId =  _UserManager.GetUserId(User);
             return View();
         }
 
