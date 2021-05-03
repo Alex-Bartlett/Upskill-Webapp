@@ -28,7 +28,7 @@ namespace Upskill.Pages.Customers
                 return NotFound();
             }
 
-            Customer = await _context.Customers.FirstOrDefaultAsync(m => m.CustomerID == id);
+            Customer = await _context.Customers.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Customer == null)
             {

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Upskill.Data;
 
-namespace Upskill.Migrations
+namespace Upskill.Data.Migrations
 {
     [DbContext(typeof(UpskillContext))]
     partial class UpskillContextModelSnapshot : ModelSnapshot
@@ -21,7 +21,7 @@ namespace Upskill.Migrations
 
             modelBuilder.Entity("Upskill.Models.Customer", b =>
                 {
-                    b.Property<int>("CustomerID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -41,7 +41,7 @@ namespace Upskill.Migrations
                     b.Property<string>("Town")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CustomerID");
+                    b.HasKey("ID");
 
                     b.ToTable("Customer");
                 });

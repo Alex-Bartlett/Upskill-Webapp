@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Upskill.Migrations
+namespace Upskill.Data.Migrations
 {
     public partial class FixAddressData : Migration
     {

@@ -30,7 +30,7 @@ namespace Upskill.Pages.Customers
                 return NotFound();
             }
 
-            Customer = await _context.Customers.FirstOrDefaultAsync(m => m.CustomerID == id);
+            Customer = await _context.Customers.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Customer == null)
             {
@@ -56,7 +56,7 @@ namespace Upskill.Pages.Customers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomerExists(Customer.CustomerID))
+                if (!CustomerExists(Customer.ID))
                 {
                     return NotFound();
                 }
@@ -71,7 +71,7 @@ namespace Upskill.Pages.Customers
 
         private bool CustomerExists(int id)
         {
-            return _context.Customers.Any(e => e.CustomerID == id);
+            return _context.Customers.Any(e => e.ID == id);
         }
     }
 }

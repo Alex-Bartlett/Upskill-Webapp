@@ -13,7 +13,7 @@ namespace Upskill.Migrations
     [Migration("20210426180320_MakeDatesNullable")]
     partial class MakeDatesNullable
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

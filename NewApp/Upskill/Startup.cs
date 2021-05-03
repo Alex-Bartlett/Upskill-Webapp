@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Upskill.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Upskill
 {
@@ -30,6 +31,13 @@ namespace Upskill
 			services.AddDbContext<UpskillContext>(options =>
 					options.UseSqlServer(Configuration.GetConnectionString("UpskillContext")));
 
+			services.AddDbContext<ApplicationDbContext>(options =>
+				options.UseSqlServer(
+					Configuration.GetConnectionString("UpskillContext")));
+
+			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+	.AddEntityFrameworkStores<ApplicationDbContext>();
+
 			services.AddDatabaseDeveloperPageExceptionFilter();
 		}
 
@@ -39,6 +47,7 @@ namespace Upskill
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
+
 			}
 			else
 			{
@@ -52,10 +61,15 @@ namespace Upskill
 
 			app.UseRouting();
 
+			app.UseAuthentication();
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
 			{
+
+				endpoints.MapControllerRoute(
+					name: "default",
+					pattern: "{controller=Home}/{action=Index}/{id?}");
 				endpoints.MapRazorPages();
 			});
 		}

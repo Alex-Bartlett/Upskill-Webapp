@@ -40,7 +40,7 @@ namespace Upskill.Pages.Jobs
 
             //Get the customer model from ID
             IQueryable<Customer> customerQuery = from c in _context.Customers
-                                                 where c.CustomerID == thisJob.CustomerID
+                                                 where c.ID == thisJob.CustomerID
                                                  select c;
             Customer customer = customerQuery.AsNoTracking().First(); //Run the query
 

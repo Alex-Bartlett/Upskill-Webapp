@@ -11,7 +11,7 @@ namespace Upskill.Models
 		public int ID { get; set; }
 		[Display(Name = "First Name")]
 		public string FirstName { get; set; }
-		[Display(Name = "Surname/Company Name")]
+		[Display(Name = "Surname/Company")]
 		public string Surname { get; set; }
 		public string Address { get; set; }
 		public string Town { get; set; }
