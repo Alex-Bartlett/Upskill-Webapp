@@ -22,7 +22,7 @@ namespace Upskill.Pages.Jobs
 								 orderby c.Surname
 								 select c;
 
-			CustomerNameSL = new SelectList(customersQuery.AsNoTracking(), "CustomerID", "FullName", selectedCustomer);
+			CustomerNameSL = new SelectList(customersQuery.AsNoTracking(), "ID", "FullName", selectedCustomer);
 		}
 
 
