@@ -1,0 +1,222 @@
+/* General CSS */
+
+@font-face {
+  font-family: Roboto-Light;
+  src: url(../css/fonts/Roboto-Light.ttf);
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto-Light", sans-serif;
+}
+
+a {
+  transition: 1s background;
+}
+/* MENU */
+}
+.menu-right {
+  display: flex;
+  float: right;
+}
+.menu-left {
+  padding: 0 4%;
+}
+.menu-left a {
+  padding: 5px 3%;
+}
+/* getstarted */
+#getstarted {
+  margin: 50px 0 10px 0;
+}
+.getstarted-box {
+  display: flex;
+  background-color: #dbefff;
+  padding: 10px 70px;
+  margin: 0 150px;
+}
+.getstarted-flex {
+  flex: 1;
+  color: #707070;
+  text-transform: uppercase;
+  align-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/* Checklist Photo wont increase */
+.getstarted-flex img {
+  width: 200%;
+  margin: 0 auto;
+}
+.getstarted-flex h1 {
+  font-size: 20px;
+  margin-top: 0;
+}
+.getstarted-flex-inner a {
+  background-color: #007fdd;
+  color: #ffffff;
+  text-transform: capitalize;
+  text-decoration: none;
+  padding: 7px 0;
+  display: block;
+  width: 110px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0 auto;
+  transition: 0.5s background;
+}
+.getstarted-flex-inner a:hover {
+  background-color: #fff;
+  color: #007fdd;
+}
+/* .getstarted-flex-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+} */
+
+/* upskill */
+.upskill-box {
+  display: flex;
+  margin: 0 150px;
+}
+.upskill-flex2 {
+  flex: 2;
+}
+.upskill-flex1 {
+  flex: 1;
+  text-align: center;
+}
+
+/* plumbers photo wont increase */
+
+.upskill-flex1 img {
+  width: 300px;
+}
+.upskill-flex2 {
+  flex: 2.2;
+  background-color: #0c3f72;
+  border-radius: 20px;
+  color: #fff;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.upskill-flex-inner {
+  width: 60%;
+}
+.upskill-flex-inner ul {
+  text-transform: uppercase;
+  font-size: 19px;
+}
+.upskill-flex-inner h3 {
+  font-size: 16px;
+}
+.upskill-flex-inner p {
+  text-align: center;
+}
+.upskill-flex-inner ul li {
+  margin-bottom: 10px;
+}
+.upskill-flex-inner i {
+  color: #fff;
+}
+.img-up {
+  position: absolute;
+  bottom: 10px;
+  width: 30px;
+  right: 10px;
+}
+/* footer */
+footer {
+  margin: 50px 150px 0px 150px;
+  background-color: #dbefff;
+  padding: 0 20px;
+  font-size: 14px;
+}
+
+.foo-2 ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.foo-2 ul li {
+  margin: 0 10px;
+}
+.foo-2 ul li a i {
+  color: #000;
+  font-size: 20px;
+  transition: 0.5s background;
+}
+.foo-2 ul li a i:hover {
+  color: #007fdd;
+}
+.p-floa {
+  margin: 0;
+  float: left;
+  margin-right: 20px;
+}
+.foo-3 a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #000;
+}
+.foo-3 p {
+  margin: 0 20px 0 0;
+}
+.foo-2 {
+  padding: 12px 0;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+.foo-3 {
+  padding: 12px 0;
+}
+
+.foo-1-flex {
+  display: flex;
+}
+.foo-1-flex-inner1 {
+  flex: 1;
+}
+.foo-1-flex-inner2 {
+  flex: 1;
+}
+.foo-1 {
+  padding: 50px 30px;
+}
+.foo-1-flex-inner1 form input {
+  padding: 5px 15px;
+  width: 50%;
+  margin-bottom: 15px;
+}
+.foo-1-flex-inner1 form textarea {
+  height: 200px;
+  width: 70%;
+  margin-bottom: 15px;
+  padding: 5px 15px;
+}
+
+.foo-1-flex-inner1 form label {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.foo-1-flex-inner1 form button {
+  width: 40%;
+  text-align: left;
+  padding: 5px;
+}
+
+.search {
+  background-image: url(../img/searchicon.png);
+  background-position: 141px 1px;
+  background-repeat: no-repeat;
+  background-size: 15px;
+}
