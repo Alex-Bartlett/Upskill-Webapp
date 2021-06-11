@@ -19,9 +19,17 @@ namespace Upskill.Models
 
 		public ICollection<Job> Jobs { get; set; }
 
+		[Display(Name = "Customer")]
 		public string FullName { get
 			{
-				return string.Format("{0}, {1}", Surname, FirstName);
+				if (string.IsNullOrEmpty(FirstName)) //No need to format if there isn't a first name.
+				{
+					return Surname;
+				}
+				else
+				{
+					return string.Format("{0}, {1}", Surname, FirstName);
+				}
 			} }
 	}
 }
