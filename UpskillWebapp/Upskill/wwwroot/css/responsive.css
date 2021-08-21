@@ -1,0 +1,255 @@
+/*==================================================
+			     Media Queries         
+==================================================*/
+
+/* Large Devices (Desktops & Laptops) */
+
+@media (min-width: 1200px) {
+  header {
+    padding: 14px 100px;
+  }
+  .getstarted-box {
+    margin: 0 100px;
+  }
+  .upskill-box {
+    margin: 0 100px;
+  }
+  footer {
+    margin: 50px 100px 0px 100px;
+  }
+}
+
+/* Medium Devices (Landscape Tablets & Medium Desktops) */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  header {
+    padding: 14px 20px;
+  }
+  .menu-left {
+    padding: 0 2%;
+  }
+  .menu-left a {
+    padding: 5px 2%;
+  }
+  .getstarted-box {
+    margin: 0 100px;
+  }
+  .upskill-box {
+    margin: 0 100px;
+  }
+  footer {
+    margin: 50px 100px 0px 100px;
+  }
+}
+
+/* Small Devices (Portrait Tablets & Small Desktops) */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  header {
+    height: 40px;
+    padding: 10px;
+  }
+  .getstarted-flex-inner {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .upskill-flex-inner {
+    width: 50%;
+  }
+  footer {
+    margin: 50px 20px 0px 20px;
+  }
+  .foo-1-flex {
+    display: block;
+  }
+  .foo-1-flex-inner1 form input {
+    width: 88%;
+    padding: 6px 15px;
+  }
+  .foo-1-flex-inner1 form textarea {
+    width: 88%;
+  }
+  .foo-1-flex-inner1 {
+    flex: 1;
+    margin-bottom: 40px;
+  }
+  .foo-1 {
+    padding: 40px 0px;
+  }
+  .getstarted-box {
+    display: block;
+    padding: 10px;
+    margin: 10px;
+  }
+  .upskill-box {
+    display: block;
+    margin: 10px;
+  }
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    display: block;
+    position: absolute;
+    right: 25px;
+    top: 18px;
+    padding: 0 0;
+  }
+  .menu-right {
+    display: block;
+    float: none;
+    width: 92%;
+    background-color: #29aef4;
+    padding: 0px 4%;
+  }
+  .topnav a.active {
+    color: #ffffff;
+  }
+  .topnav-inner {
+    background-color: #29aef4;
+  }
+  .topnav.responsive {
+    position: absolute;
+    overflow: hidden;
+    padding: 50px 0 0 0;
+    width: 97%;
+  }
+  .topnav.responsive .icon {
+    display: block;
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    padding: 0 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+    padding: 10px;
+  }
+  a.btn-register {
+    background-color: #007fdd00;
+    color: #000;
+  }
+  .upskill-flex1 img {
+    width: 200px;
+  }
+  .getstarted-flex img {
+    width: 200px;
+  }
+  .getstarted-flex {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+/* Extra Small Devices (Landscape Phones & Portrait Tablets) */
+
+@media (max-width: 767px) {
+  header {
+    height: 40px;
+    padding: 10px;
+  }
+  .getstarted-flex-inner {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .upskill-flex-inner {
+    width: 90%;
+  }
+  footer {
+    margin: 50px 20px 0px 20px;
+  }
+  .foo-1-flex {
+    display: block;
+  }
+  .foo-1-flex-inner1 form input {
+    width: 88%;
+    padding: 6px 15px;
+  }
+  .foo-1-flex-inner1 form textarea {
+    width: 88%;
+  }
+  .foo-1-flex-inner1 {
+    flex: 1;
+    margin-bottom: 40px;
+  }
+  .foo-1 {
+    padding: 40px 0px;
+  }
+  .getstarted-box {
+    display: block;
+    padding: 10px;
+    margin: 10px;
+  }
+  .upskill-box {
+    display: block;
+    margin: 10px;
+  }
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    display: block;
+    position: absolute;
+    right: 25px;
+    top: 18px;
+    padding: 0 0;
+  }
+  .menu-right {
+    display: block;
+    float: none;
+    width: 92%;
+    background-color: #29aef4;
+    padding: 0px 4%;
+  }
+  .topnav a.active {
+    color: #ffffff;
+  }
+  .topnav-inner {
+    background-color: #29aef4;
+  }
+  .topnav.responsive {
+    position: absolute;
+    overflow: hidden;
+    padding: 50px 0 0 0;
+    width: 95%;
+  }
+  .topnav.responsive .icon {
+    display: block;
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    padding: 0 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+    padding: 10px;
+  }
+  a.btn-register {
+    background-color: #007fdd00;
+    color: #000;
+  }
+  .upskill-flex1 img {
+    width: 200px;
+  }
+  .getstarted-flex img {
+    width: 200px;
+  }
+}
+
+/* Extra Small Devices (Portrait Phones & Smaller devices) */
+
+@media (max-width: 480px) {
+  .menu-right {
+    width: 88%;
+  }
+}
+
+/* Extra Small Devices (Portrait Phones & Smaller devices) */
+
+@media (max-width: 320px) {
+}
