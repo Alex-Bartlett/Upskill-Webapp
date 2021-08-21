@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Upskill.Pages.Jobs
 {
-    public class CreateModel : CustomerNamePageModel
+    public class CreateModel : StaffJobModel //This inherits from customerNamePageModel, which uses PageModel
     {
         private readonly Upskill.Data.UpskillContext _context;
 
@@ -24,6 +24,7 @@ namespace Upskill.Pages.Jobs
         public IActionResult OnGet()
         {
             PopulateCustomerDropDownList(_context);
+            
             return Page();
         }
 

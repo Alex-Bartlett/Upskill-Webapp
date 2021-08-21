@@ -11,7 +11,7 @@ using Upskill.Models;
 
 namespace Upskill.Pages.Jobs
 {
-    public class EditModel : CustomerNamePageModel
+    public class EditModel : StaffJobModel //This inherits from customerNamePageModel, which uses PageModel
     {
         private readonly Upskill.Data.UpskillContext _context;
 
@@ -37,6 +37,7 @@ namespace Upskill.Pages.Jobs
             {
                 return NotFound();
             }
+            PopulateAssignedStaffData(_context, Job);
             PopulateCustomerDropDownList(_context, Job.CustomerID);
             return Page();
         }
