@@ -84,6 +84,31 @@
             @Html.DisplayFor(model => model.Job.Customer.FullName)
         </dd>
     </dl>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Job.StaffJobs.FirstOrDefault().StaffMember)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Job.StaffJobs.FirstOrDefault().HoursWorked)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Job.StaffJobs.FirstOrDefault().Notes)
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in Model.Job.StaffJobs)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelTask => task.StaffMember.FullName)</td>
+                    <td>@Html.DisplayFor(modelTask => task.HoursWorked)</td>
+                    <td>@Html.DisplayFor(modelTask => task.Notes)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Job.ID">Edit</a> |

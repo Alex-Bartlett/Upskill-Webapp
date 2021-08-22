@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Upskill.Pages.Jobs
 {
-    public class CreateModel : StaffJobModel //This inherits from customerNamePageModel, which uses PageModel
+    public class CreateModel : CustomerNamePageModel //This inherits from customerNamePageModel, which uses PageModel
     {
         private readonly Upskill.Data.UpskillContext _context;
 

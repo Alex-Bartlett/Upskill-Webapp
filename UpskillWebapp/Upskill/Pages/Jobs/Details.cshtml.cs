@@ -21,7 +21,7 @@ namespace Upskill.Pages.Jobs
 
         public Job Job { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+		public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
@@ -29,12 +29,15 @@ namespace Upskill.Pages.Jobs
             }
 
             Job = await _context.Jobs
+                .Include(j => j.StaffJobs)
+                    .ThenInclude(sj => sj.StaffMember)
                 .Include(j => j.Customer).FirstOrDefaultAsync(m => m.ID == id);
 
             if (Job == null)
             {
                 return NotFound();
             }
+
             return Page();
         }
     }

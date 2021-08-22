@@ -7,9 +7,6 @@ namespace Upskill.Models
 {
 	public class AssignedStaffData
 	{
-		public int StaffJobID { get; set; }
-		public string StaffMemberName { get; set; }
-		public int? HoursWorked { get; set; }
-		public string Notes { get; set; }
+		public IEnumerable<StaffJob> Tasks { get; set; }
 	}
 }

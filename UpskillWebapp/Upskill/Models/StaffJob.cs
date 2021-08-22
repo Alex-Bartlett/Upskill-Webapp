@@ -9,12 +9,11 @@ namespace Upskill.Models
 	{
 		public int ID { get; set; }
 		public int JobID { get; set; }
-		public int StaffID { get; set; }
+		public int StaffMemberID { get; set; }
 		public int? HoursWorked { get; set; }
 		public int? DaysWorked { get; set; }
 		public string Notes { get; set; }
 
-		public Job Job { get; set; }
 		public StaffMember StaffMember { get; set; }
 	}
 }
