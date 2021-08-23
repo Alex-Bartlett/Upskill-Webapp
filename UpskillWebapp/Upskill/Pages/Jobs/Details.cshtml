@@ -87,15 +87,18 @@
     <table class="table">
         <thead>
             <tr>
-                <td>
+                <th>
                     @Html.DisplayNameFor(model => model.Job.StaffJobs.FirstOrDefault().StaffMember)
-                </td>
-                <td>
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Job.StaffJobs.FirstOrDefault().HoursWorked)
-                </td>
-                <td>
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Job.StaffJobs.FirstOrDefault().Notes)
-                </td>
+                </th>
+                <th>
+                    Actions
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -105,8 +108,18 @@
                     <td>@Html.DisplayFor(modelTask => task.StaffMember.FullName)</td>
                     <td>@Html.DisplayFor(modelTask => task.HoursWorked)</td>
                     <td>@Html.DisplayFor(modelTask => task.Notes)</td>
+                    <td>
+                        <form method="post">
+                            <input class="btn btn-outline-danger" type="submit" value="Delete" asp-page-handler="Delete" asp-route-id="@task.ID" asp-route-jobId="@task.JobID"/>
+                        </form>
+                    </td>
                 </tr>
             }
+            <tr>
+                <td>
+                    <a asp-page="/StaffJobs/Create" asp-route-id="@Model.Job.ID">Add Task</a>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

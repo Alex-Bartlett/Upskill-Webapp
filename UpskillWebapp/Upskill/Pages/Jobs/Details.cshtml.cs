@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Upskill.Data;
 using Upskill.Models;
+using Upskill.Pages.StaffJobs;
 
 namespace Upskill.Pages.Jobs
 {
-    public class DetailsModel : PageModel
+    public class DetailsModel : StaffNamePageModel
     {
         private readonly Upskill.Data.UpskillContext _context;
 
@@ -40,5 +41,14 @@ namespace Upskill.Pages.Jobs
 
             return Page();
         }
+
+        public async Task<IActionResult> OnPostDeleteAsync(int? id, int? jobId)
+		{
+            if(id.HasValue)
+			{
+                await DeleteStaffJob(_context, id.Value);
+			}
+            return Redirect($"./Details?id={jobId.GetValueOrDefault()}");
+		}
     }
 }
