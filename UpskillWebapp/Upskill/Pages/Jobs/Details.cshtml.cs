@@ -21,6 +21,7 @@ namespace Upskill.Pages.Jobs
         }
 
         public Job Job { get; set; }
+		public int HoursWorked { get; set; }
 
 		public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -38,6 +39,16 @@ namespace Upskill.Pages.Jobs
             {
                 return NotFound();
             }
+
+            HoursWorked = 0;
+
+            foreach(StaffJob task in Job.StaffJobs)
+			{
+				if (task.HoursWorked.HasValue)
+				{
+                    HoursWorked += task.HoursWorked.Value;
+				}
+			}
 
             return Page();
         }
