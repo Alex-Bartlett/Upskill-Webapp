@@ -63,7 +63,7 @@ namespace Upskill.Pages.StaffJobs
                 return Redirect(ReturnURL);
 			}
 
-            //UPDATE THIS TO RETURN TO JOB
+            PopulateStaffDropDownList(_context);
             return Page();
         }
     }

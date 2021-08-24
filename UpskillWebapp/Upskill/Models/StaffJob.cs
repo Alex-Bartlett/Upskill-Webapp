@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,10 +11,13 @@ namespace Upskill.Models
 		public int ID { get; set; }
 		public int JobID { get; set; }
 		public int StaffMemberID { get; set; }
+		[Display(Name = "Hours Worked")]
 		public int? HoursWorked { get; set; }
+		[Display(Name = "Days Worked")]
 		public int? DaysWorked { get; set; }
 		public string Notes { get; set; }
 
+		[Display(Name = "Staff Member")]
 		public StaffMember StaffMember { get; set; }
 	}
 }
