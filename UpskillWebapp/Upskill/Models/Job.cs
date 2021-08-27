@@ -29,7 +29,7 @@ namespace Upskill.Models
 		public statusType Status { get; set; }
 		[Display(Name = "Hours Worked")]
 		public int? HoursWorked { get; set; }
-		[Display(Name = "Individual Days Worked")]
+		[Display(Name = "Days Worked")]
 		public int? DaysWorked { get; set; }
 
 		[DataType(DataType.Date)]

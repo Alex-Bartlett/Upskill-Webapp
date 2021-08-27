@@ -11,7 +11,7 @@ using Upskill.Models;
 
 namespace Upskill.Pages.StaffJobs
 {
-    public class EditModel : PageModel
+    public class EditModel : StaffNamePageModel
     {
         private readonly Upskill.Data.UpskillContext _context;
 
@@ -22,13 +22,17 @@ namespace Upskill.Pages.StaffJobs
 
         [BindProperty]
         public StaffJob StaffJob { get; set; }
+        [BindProperty]
+		public string ReturnURL { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+		public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
+
+            ReturnURL = Request.Headers["Referer"].ToString();
 
             StaffJob = await _context.StaffJobs
                 .Include(s => s.StaffMember).FirstOrDefaultAsync(m => m.ID == id);
@@ -37,7 +41,7 @@ namespace Upskill.Pages.StaffJobs
             {
                 return NotFound();
             }
-           ViewData["StaffMemberID"] = new SelectList(_context.Staff, "ID", "ID");
+            PopulateStaffDropDownList(_context);
             return Page();
         }
 
@@ -47,6 +51,7 @@ namespace Upskill.Pages.StaffJobs
         {
             if (!ModelState.IsValid)
             {
+                PopulateStaffDropDownList(_context);
                 return Page();
             }
 
@@ -68,7 +73,7 @@ namespace Upskill.Pages.StaffJobs
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage(ReturnURL);
         }
 
         private bool StaffJobExists(int id)

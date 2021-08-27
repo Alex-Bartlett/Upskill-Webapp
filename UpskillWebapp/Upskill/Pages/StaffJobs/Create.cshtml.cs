@@ -49,8 +49,10 @@ namespace Upskill.Pages.StaffJobs
                 emptyTask,
                 "staffjob",
                 t => t.StaffMemberID,
+                t => t.Date,
                 t => t.DaysWorked,
                 t => t.HoursWorked,
+                t => t.Materials,
                 t => t.Notes
 				))
 			{
