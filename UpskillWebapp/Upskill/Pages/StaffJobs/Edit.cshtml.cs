@@ -22,8 +22,6 @@ namespace Upskill.Pages.StaffJobs
 
         [BindProperty]
         public StaffJob StaffJob { get; set; }
-        [BindProperty]
-		public string ReturnURL { get; set; }
 
 		public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -32,7 +30,6 @@ namespace Upskill.Pages.StaffJobs
                 return NotFound();
             }
 
-            ReturnURL = Request.Headers["Referer"].ToString();
 
             StaffJob = await _context.StaffJobs
                 .Include(s => s.StaffMember).FirstOrDefaultAsync(m => m.ID == id);
@@ -41,39 +38,36 @@ namespace Upskill.Pages.StaffJobs
             {
                 return NotFound();
             }
-            PopulateStaffDropDownList(_context);
+            PopulateStaffDropDownList(_context, StaffJob.StaffMemberID);
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                PopulateStaffDropDownList(_context);
-                return Page();
-            }
+            var taskToUpdate = await _context.StaffJobs.FindAsync(id);
 
-            _context.Attach(StaffJob).State = EntityState.Modified;
+            if (taskToUpdate is null)
+			{
+                return NotFound();
+			}
 
-            try
-            {
+            if (await TryUpdateModelAsync<StaffJob>(taskToUpdate,"staffjob",
+                t => t.ID,
+                t => t.StaffMemberID,
+                t => t.Date,
+                t => t.DaysWorked,
+                t => t.HoursWorked,
+                t => t.Materials,
+                t => t.Notes
+				))
+			{
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StaffJobExists(StaffJob.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return Redirect($"/Jobs/Details?id={taskToUpdate.JobID}"); //Return to the job's page.
             }
 
-            return RedirectToPage(ReturnURL);
+            return Page();
         }
 
         private bool StaffJobExists(int id)

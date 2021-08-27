@@ -10,7 +10,7 @@ using Upskill.Models;
 
 namespace Upskill.Pages.StaffJobs
 {
-    public class DetailsModel : PageModel
+    public class DetailsModel : StaffNamePageModel
     {
         private readonly Upskill.Data.UpskillContext _context;
 
@@ -20,13 +20,16 @@ namespace Upskill.Pages.StaffJobs
         }
 
         public StaffJob StaffJob { get; set; }
-
-        public async Task<IActionResult> OnGetAsync(int? id)
+        [BindProperty]
+		public string ReturnURL { get; set; }
+		public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
+
+            ReturnURL = Request.Headers["Referer"].ToString();
 
             StaffJob = await _context.StaffJobs
                 .Include(s => s.StaffMember).FirstOrDefaultAsync(m => m.ID == id);
