@@ -43,6 +43,8 @@ namespace Upskill.Models
 		[DataType(DataType.Date)]
 		[Display(Name = "Date Finished")]
 		public DateTime? FinishedDate { get; set; }
+		[Display(Name = "Significant Purchases")]
+		public string SignificantPurchases { get; set; }
 		public string Notes { get; set; }
 		public Customer Customer { get; set; }
 		public ICollection<StaffJob> StaffJobs { get; set; }
