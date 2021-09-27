@@ -81,6 +81,9 @@ namespace Upskill.Data.Migrations
                     b.Property<string>("Postcode")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("SignificantPurchases")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 

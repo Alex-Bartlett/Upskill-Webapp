@@ -21,9 +21,16 @@ namespace Upskill.Pages.Jobs
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int? customer)
         {
-            PopulateCustomerDropDownList(_context);
+            if (customer is not null)
+            {
+                PopulateCustomerDropDownList(_context, customer);
+            }
+			else
+			{
+                PopulateCustomerDropDownList(_context);
+			}
             
             return Page();
         }
@@ -49,6 +56,7 @@ namespace Upskill.Pages.Jobs
             s => s.DueDate,
             s => s.StartDate,
             s => s.FinishedDate,
+            s => s.SignificantPurchases,
             s => s.Notes))
             {
                 _context.Jobs.Add(emptyJob);

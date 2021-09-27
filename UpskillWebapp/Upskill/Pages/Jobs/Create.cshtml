@@ -23,7 +23,7 @@
                 <select asp-for="Job.CustomerID" class="form-control" asp-items="@Model.CustomerNameSL">
                     <option>-- Select Customer --</option>
                 </select>
-                <a asp-page="/Customers/Create">New customer</a>
+                <a asp-page="/Customers/Create" asp-route-redirectToJob="true">New customer</a>
             </div>
             <div class="form-group">
                 <label asp-for="Job.Address" class="control-label"></label>
@@ -66,8 +66,13 @@
                 <span asp-validation-for="Job.FinishedDate" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Job.SignificantPurchases" class="control-label"></label>
+                <textarea asp-for="Job.SignificantPurchases" class="form-control"></textarea>
+                <span asp-validation-for="Job.SignificantPurchases" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Job.Notes" class="control-label"></label>
-                <input asp-for="Job.Notes" class="form-control" />
+                <textarea asp-for="Job.Notes" class="form-control"></textarea>
                 <span asp-validation-for="Job.Notes" class="text-danger"></span>
             </div>
             <div class="form-group">

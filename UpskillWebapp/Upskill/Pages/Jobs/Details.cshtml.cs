@@ -32,14 +32,17 @@ namespace Upskill.Pages.Jobs
             }
 
             Job = await _context.Jobs
-                .Include(j => j.StaffJobs)
-                    .ThenInclude(sj => sj.StaffMember)
-                .Include(j => j.Customer).FirstOrDefaultAsync(m => m.ID == id);
+                .Include(j => j.StaffJobs.OrderByDescending(sj => sj.Date))
+                    .ThenInclude(sj => sj.StaffMember)                    
+                .Include(j => j.Customer)
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (Job == null)
             {
                 return NotFound();
             }
+
+            Job.
 
             HoursWorked = 0;
             DaysWorked = 0;
