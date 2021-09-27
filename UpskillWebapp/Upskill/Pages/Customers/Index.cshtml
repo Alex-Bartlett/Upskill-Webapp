@@ -37,7 +37,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Surname)
             </td>
-            <td>
+            <td width="10%">
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
@@ -49,10 +49,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Postcode)
             </td>
-            <td>
+            <td style="width: 27%">
+                <a asp-page="/Jobs/Create" asp-route-customer="@item.ID" class="btn btn-outline-success">+Job</a>
                 <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-outline-primary">Edit</a>
                 <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-outline-primary">Details</a>
-                <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-outline-primary">Delete</a>
+                <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-outline-danger">Delete</a>
             </td>
         </tr>
 }

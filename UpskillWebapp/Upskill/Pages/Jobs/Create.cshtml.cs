@@ -21,9 +21,16 @@ namespace Upskill.Pages.Jobs
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int? customer)
         {
-            PopulateCustomerDropDownList(_context);
+            if (customer is not null)
+            {
+                PopulateCustomerDropDownList(_context, customer);
+            }
+			else
+			{
+                PopulateCustomerDropDownList(_context);
+			}
             
             return Page();
         }
