@@ -19,26 +19,36 @@ namespace Upskill.Pages.Customers
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(bool? redirectToJob)
         {
+            RedirectToJob = redirectToJob;
             return Page();
         }
 
         [BindProperty]
         public Customer Customer { get; set; }
+        [BindProperty]
+		public bool? RedirectToJob { get; set; }
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
+		// To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+		public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
             _context.Customers.Add(Customer);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            //If user used 'new customer' button on job page then route back to that page with customer.
+            if (RedirectToJob.HasValue)
+            {
+                return Redirect("/Jobs/Create?customer=" + Customer.ID);
+            }
+            else
+            {
+                return RedirectToPage("./Index");
+            }
         }
     }
 }
