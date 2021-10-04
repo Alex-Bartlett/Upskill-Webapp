@@ -34,7 +34,7 @@ namespace Upskill.Pages.Jobs
         /// <returns>Job reference as ID_NAME_ADDRESS</returns>
         public string GenerateJobReference(Job thisJob, UpskillContext _context)
         {
-            StringBuilder strb = new();
+           /* StringBuilder strb = new();
             strb.Append(thisJob.ID);
             strb.Append('_');
 
@@ -66,7 +66,8 @@ namespace Upskill.Pages.Jobs
                 strb.Append(address);
             }
 
-            return strb.ToString();
+            return strb.ToString();*/
+            return thisJob.Address.ToString();
 
         }
     }
