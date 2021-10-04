@@ -46,6 +46,10 @@ namespace Upskill.Models
 		[Display(Name = "Significant Purchases")]
 		public string SignificantPurchases { get; set; }
 		public string Notes { get; set; }
+
+		[DataType(DataType.DateTime)]
+		public DateTime CreationTime { get; set; }
+
 		public Customer Customer { get; set; }
 		public ICollection<StaffJob> StaffJobs { get; set; }
 	}

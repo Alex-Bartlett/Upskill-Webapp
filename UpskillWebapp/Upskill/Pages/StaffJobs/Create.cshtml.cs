@@ -53,14 +53,19 @@ namespace Upskill.Pages.StaffJobs
                 t => t.DaysWorked,
                 t => t.HoursWorked,
                 t => t.Materials,
-                t => t.Notes
+                t => t.Notes,
+                t => t.CreationTime
 				))
 			{
                 
                 emptyTask.JobID = ID;
                 _context.StaffJobs.Add(emptyTask);
                 await _context.SaveChangesAsync();
-
+                //Update creationTime of related Job
+                var job = await _context.Jobs.FindAsync(ID);
+                job.CreationTime = DateTime.Now;
+                await _context.SaveChangesAsync();
+                    
                 //Return to previous page
                 return Redirect(ReturnURL);
 			}

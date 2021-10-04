@@ -21,6 +21,9 @@ namespace Upskill.Models
 		public string Materials { get; set; }
 		public string Notes { get; set; }
 
+		[DataType(DataType.DateTime)]
+		public DateTime CreationTime { get; set; }
+
 		[Display(Name = "Staff Member")]
 		public StaffMember StaffMember { get; set; }
 	}

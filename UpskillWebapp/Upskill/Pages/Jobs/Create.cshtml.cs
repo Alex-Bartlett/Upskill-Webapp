@@ -57,7 +57,8 @@ namespace Upskill.Pages.Jobs
             s => s.StartDate,
             s => s.FinishedDate,
             s => s.SignificantPurchases,
-            s => s.Notes))
+            s => s.Notes,
+            s => s.CreationTime))
             {
                 _context.Jobs.Add(emptyJob);
                 await _context.SaveChangesAsync();

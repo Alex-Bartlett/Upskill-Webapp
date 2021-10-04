@@ -70,7 +70,8 @@ namespace Upskill.Pages.Jobs
                 s => s.DueDate,
                 s => s.StartDate,
                 s => s.FinishedDate,
-                s => s.Notes))
+                s => s.Notes,
+                s => s.CreationTime))
             {
                 if (String.IsNullOrEmpty(Job.JobReference))
                 {

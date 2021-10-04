@@ -17,6 +17,9 @@ namespace Upskill.Models
 		public string Town { get; set; }
 		public string Postcode { get; set; }
 
+		[DataType(DataType.DateTime)]
+		public DateTime CreationTime { get; set; }
+
 		public ICollection<Job> Jobs { get; set; }
 
 		[Display(Name = "Customer")]

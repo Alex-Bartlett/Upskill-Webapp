@@ -13,6 +13,9 @@ namespace Upskill.Models
 		public string FirstName { get; set; }
 
 		public string Surname { get; set; }
+		
+		[DataType(DataType.DateTime)]
+		public DateTime CreationTime { get; set; }
 		public string FullName
 		{
 			get
