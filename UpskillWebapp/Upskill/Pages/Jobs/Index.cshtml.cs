@@ -58,13 +58,16 @@ namespace Upskill.Pages.Jobs
                     jobsQuery = jobsQuery.OrderBy(j => j.Status);
                     break;
                 case "status_desc":
-                    jobsQuery = jobsQuery.OrderByDescending(j => j.Status);
+                    jobsQuery = jobsQuery.Where(j => j.Status != Job.statusType.Invoiced)
+                        .OrderByDescending(j => j.Status);
                     break;
                 case "date_asc":
-                    jobsQuery = jobsQuery.OrderBy(j => j.DueDate);
+                    jobsQuery = jobsQuery.OrderBy(j => j.DueDate == null)
+                        .ThenBy(j => j.DueDate);
                     break;
                 case "date_desc":
-                    jobsQuery = jobsQuery.OrderByDescending(j => j.DueDate);
+                    jobsQuery = jobsQuery.OrderByDescending(j => j.DueDate)
+                        .ThenBy(j => j.DueDate == null);
                     break;
                 case "name_asc":
                     jobsQuery = jobsQuery.OrderBy(j => j.Customer.Surname);

@@ -55,28 +55,37 @@
     <tbody>
         @foreach (var item in Model.Jobs)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ID)
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobReference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.FullName)
+            </td>
+            @if (item.DueDate.HasValue && (DateTime.Compare(item.DueDate.Value, DateTime.Now) < 0) && (item.Status == Models.Job.statusType.Pending || item.Status == Models.Job.statusType.Started))
+            {
+                <td class="text-danger" style="font-weight: bold">
+                    @Html.DisplayFor(modelItem => item.DueDate)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.JobReference)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Customer.FullName)
-                </td>
+            }
+            else
+            {
                 <td>
                     @Html.DisplayFor(modelItem => item.DueDate)
                 </td>
-                <td style="color:@Model.GetStatusColour(item.Status.ToString())">
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-outline-primary">Edit</a>
-                    <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-outline-primary">Details</a>
-                    <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-outline-danger">Delete</a>
-                </td>
-            </tr>
+            }
+            <td style="color:@Model.GetStatusColour(item.Status.ToString())">
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-outline-primary">Edit</a>
+                <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-outline-primary">Details</a>
+                <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
