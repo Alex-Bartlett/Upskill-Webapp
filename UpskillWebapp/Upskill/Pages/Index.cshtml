@@ -20,6 +20,12 @@
             text-align: left;
             box-shadow: rgb(0 0 0 / 15%) 3px 3px 4px 0px;
         }
+        .special-table {
+            border: 1px solid #e5e4e4;
+            border-radius: 10px;
+            box-shadow: rgb(0 0 0 / 15%) 3px 3px 4px 0px;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -30,51 +36,127 @@
         <h4><a asp-page="/Jobs/Index">Click here to begin</a></h4>
         <hr />
         <br />
-        <div class="index-content">
-            <div style="text-align:left">
-                <h2>Tips</h2>
-                <ul>
-                    <li>You can show jobs for a customer by searching their surname or company</li>
-                    <li>Jobs can be sorted by ID, customer, due date and status</li>
-                    <li>You won't get a warning message before deleting a task on a job</li>
-                    <li>Quickly create a job for a customer by pressing +Job on the customer page</li>
-                    <li>Use 'New Customer' on the create job page to save navigating to the customer page</li>
-                </ul>
-            </div>
-            <br />
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div style="text-align:left">
+                        <h2>Tips</h2>
+                        <ul>
+                            <li>You can show jobs for a customer by searching their surname or company</li>
+                            <li>Jobs can be sorted by ID, customer, due date and status</li>
+                            <li>You won't get a warning message before deleting a task on a job</li>
+                            <li>Quickly create a job for a customer by pressing +Job on the customer page</li>
+                            <li>Use 'New Customer' on the create job page to save navigating to the customer page</li>
+                        </ul>
+                    </div>
+                    <br />
 
-            <h2 style="text-align:left">Changes</h2>
-
-            <div class="update-box">
-                <h6>Update 1.02 29/09/2021</h6>
-                <p>Quick-fix for update 1.01</p>
-                <span>[Fixes]</span>
-                <ul>
-                    <li>Significant purchases now show in job details</li>
-                    <li>'Back to job' link at the bottom of StaffJobs/Edit now returns to the correct page</li>
-                </ul>
-            </div>
-            <div class="update-box">
-                <h6>Update 1.01 27/09/2021</h6>
-                <p>This update adds a few quality of life features and improvements to streamline the job creation process. It also tidies up some of the inconsistent stylings from the original release.</p>
-                <span>[Major]</span>
-                <ul>
-                    <li>Added significant purchases field to jobs</li>
-                    <li>Added +Job button on customers page to create a job for that customer</li>
-                </ul>
-                <span>[Minor]</span>
-                <ul>
-                    <li>Added a save button at the top of edit job</li>
-                    <li>Updated privacy statement</li>
-                    <li>Changed all delete buttons to be red</li>
-                </ul>
-                <span>[Fixes]</span>
-                <ul>
-                    <li>Staff jobs are now ordered by date, not creation</li>
-                    <li>Edit, Details and Delete buttons of Staff Jobs won't wrap onto a new line in full-screen</li>
-                    <li>Changed notes & materials sections to use text areas instead of fields</li>
-                    <li>Create new customer link on create job returns and auto fills to job on creation</li>
-                </ul>
+                    <h2 style="text-align:left">Changes</h2>
+                    <div class="update-box">
+                        <h6>Update 1.03 04/10/2021</h6>
+                        <p>The dashboard has been completely redesigned. You can now see your most recent jobs, and jobs record the time you last modified them.</p>
+                        <span>[Major]</span>
+                        <ul>
+                            <li>Added a recent jobs table to dashboard</li>
+                            <li>Added frequent customers table to dashboard</li>
+                            <li>Added a last modified field to all tables</li>
+                        </ul>
+                        <span>[Minor]</span>
+                        <ul>
+                            <li>Job reference now uses address if left blank</li>
+                        </ul>
+                    </div>
+                    <div class="update-box">
+                        <h6>Update 1.02 29/09/2021</h6>
+                        <p>Quick-fix for update 1.01</p>
+                        <span>[Fixes]</span>
+                        <ul>
+                            <li>Significant purchases now show in job details</li>
+                            <li>'Back to job' link at the bottom of StaffJobs/Edit now returns to the correct page</li>
+                        </ul>
+                    </div>
+                    <div class="update-box">
+                        <h6>Update 1.01 27/09/2021</h6>
+                        <p>This update adds a few quality of life features and improvements to streamline the job creation process. It also tidies up some of the inconsistent stylings from the original release.</p>
+                        <span>[Major]</span>
+                        <ul>
+                            <li>Added significant purchases field to jobs</li>
+                            <li>Added +Job button on customers page to create a job for that customer</li>
+                        </ul>
+                        <span>[Minor]</span>
+                        <ul>
+                            <li>Added a save button at the top of edit job</li>
+                            <li>Updated privacy statement</li>
+                            <li>Changed all delete buttons to be red</li>
+                        </ul>
+                        <span>[Fixes]</span>
+                        <ul>
+                            <li>Staff jobs are now ordered by date, not creation</li>
+                            <li>Edit, Details and Delete buttons of Staff Jobs won't wrap onto a new line in full-screen</li>
+                            <li>Changed notes & materials sections to use text areas instead of fields</li>
+                            <li>Create new customer link on create job returns and auto fills to job on creation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col" style="text-align:left">
+                    <div>
+                        <h3>Recent Jobs</h3>
+                        <div class="special-table">
+                            <table class="table table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Jobs[0].JobReference)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Jobs[0].Customer.FullName)
+                                        </th>
+                                        <th style="width: 10%"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Jobs)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.JobReference)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Customer.FullName)
+                                            </td>
+                                            <td>
+                                                <a asp-page="Jobs/Details" asp-route-id="@item.ID" class="btn btn-outline-primary">Details</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <div>
+                        <h3>Frequent customers</h3>
+                        <div class="special-table">
+                            <table class="table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th style="width: 78%">@Html.DisplayNameFor(model => model.Customers[0].FullName)</th>
+                                        <th style="min-width: 22%;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Customers)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                                            <td><a asp-page="Jobs/Create" asp-route-customer="@item.ID" class="btn btn-outline-success">New Job</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
