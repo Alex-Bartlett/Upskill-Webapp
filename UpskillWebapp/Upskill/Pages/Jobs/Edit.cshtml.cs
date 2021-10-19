@@ -70,6 +70,7 @@ namespace Upskill.Pages.Jobs
                 s => s.DueDate,
                 s => s.StartDate,
                 s => s.FinishedDate,
+                s => s.SignificantPurchases,
                 s => s.Notes,
                 s => s.CreationTime))
             {
