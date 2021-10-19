@@ -30,8 +30,8 @@ namespace Upskill.Pages.Jobs
 
         public async Task OnGetAsync(string sortOrder, string searchString)
         {
-            IDSort = string.IsNullOrEmpty(sortOrder) ? "id_asc" : ""; //The default sort is by ID descending. An empty string implies default sorting.
-            StatusSort = sortOrder == "status_asc" ? "status_desc" : "status_asc";//Sets the sort type, or toggles between ascending or descending when the same sort is clicked.
+            IDSort =  sortOrder == "id_asc" ? "id_desc" : "id_asc"; //The default sort is by ID descending. An empty string implies default sorting.
+            StatusSort = string.IsNullOrEmpty(sortOrder) ? "status_asc" : "";//Sets the sort type, or toggles between ascending or descending when the same sort is clicked.
             DateSort = sortOrder == "date_asc" ? "date_desc" : "date_asc"; //Shortened if statement. If the sort order is "date_asc", set it to "date_desc". Else, set to "date_asc".
             NameSort = sortOrder == "name_asc" ? "name_desc" : "name_asc"; //Name = customer surname
 
@@ -54,12 +54,11 @@ namespace Upskill.Pages.Jobs
                 case "id_asc":
                     jobsQuery = jobsQuery.OrderBy(j => j.ID);
                     break;
+                case "id_desc":
+                    jobsQuery = jobsQuery.OrderByDescending(j => j.ID);
+                    break;
                 case "status_asc":
                     jobsQuery = jobsQuery.OrderBy(j => j.Status);
-                    break;
-                case "status_desc":
-                    jobsQuery = jobsQuery.Where(j => j.Status != Job.statusType.Invoiced)
-                        .OrderByDescending(j => j.Status);
                     break;
                 case "date_asc":
                     jobsQuery = jobsQuery.OrderBy(j => j.DueDate == null)
@@ -76,7 +75,7 @@ namespace Upskill.Pages.Jobs
                     jobsQuery = jobsQuery.OrderByDescending(j => j.Customer.Surname);
                     break;
                 default:
-                    jobsQuery = jobsQuery.OrderByDescending(j => j.ID);
+                    jobsQuery = jobsQuery.OrderByDescending(j => j.Status == Job.statusType.Invoiced ? 0 : (j.Status == Job.statusType.Pending ? 1 : (j.Status == Job.statusType.Started ? 2 : 3)));
                     break;
 			}
 
