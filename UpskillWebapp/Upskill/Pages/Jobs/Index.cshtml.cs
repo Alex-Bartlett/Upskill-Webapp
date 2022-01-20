@@ -25,10 +25,11 @@ namespace Upskill.Pages.Jobs
 		public string IDSort { get; set; }
 		public string CurrentFilter { get; set; }
 		public string CurrentSort { get; set; }
+        public int? CustomerID { get; set; }
 
 		public IList<Job> Jobs { get;set; }
 
-        public async Task OnGetAsync(string sortOrder, string searchString)
+        public async Task OnGetAsync(string sortOrder, string searchString, int? customerID)
         {
             IDSort =  sortOrder == "id_asc" ? "id_desc" : "id_asc"; //The default sort is by ID descending. An empty string implies default sorting.
             StatusSort = string.IsNullOrEmpty(sortOrder) ? "status_asc" : "";//Sets the sort type, or toggles between ascending or descending when the same sort is clicked.
@@ -36,6 +37,7 @@ namespace Upskill.Pages.Jobs
             NameSort = sortOrder == "name_asc" ? "name_desc" : "name_asc"; //Name = customer surname
 
             CurrentFilter = searchString;
+            CustomerID = customerID;
 
             IQueryable<Job> jobsQuery = from j in _context.Jobs
                                         select j;
@@ -48,6 +50,10 @@ namespace Upskill.Pages.Jobs
                                               || j.Address.Contains(searchString)
                                               || j.Postcode.Contains(searchString));
 			}
+            if (CustomerID is not null)
+            {
+                jobsQuery = jobsQuery.Where(j => j.CustomerID.Equals(CustomerID));
+            }
             
             switch (sortOrder)
 			{
