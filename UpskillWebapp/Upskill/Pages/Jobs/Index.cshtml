@@ -16,7 +16,7 @@
     <thead>
         <tr>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.IDSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.IDSort" asp-route-searchString="@Model.CurrentFilter" asp-route-customerID="@Model.CustomerID">
                     @Html.DisplayNameFor(model => model.Jobs[0].ID)
                 </a>
             </th>
@@ -24,17 +24,17 @@
                 @Html.DisplayNameFor(model => model.Jobs[0].JobReference)
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort" asp-route-searchString="@Model.CurrentFilter" asp-route-customerID="@Model.CustomerID">
                     @Html.DisplayNameFor(model => model.Jobs[0].Customer.FullName)
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort" asp-route-searchString="@Model.CurrentFilter" asp-route-customerID="@Model.CustomerID">
                     @Html.DisplayNameFor(model => model.Jobs[0].DueDate)
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.StatusSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.StatusSort" asp-route-searchString="@Model.CurrentFilter" asp-route-customerID="@Model.CustomerID">
                     @Html.DisplayNameFor(model => model.Jobs[0].Status)
                 </a>
             </th>
